@@ -43,4 +43,4 @@ npm run build
 # ⚖️ Лицензия
 Код в репозитории является частью проекта "Генератор рассадок" и лицензирован под **GNU Affero General Public License v3.0 (AGPLv3)**. Подробности см. в файлах [LICENSE](./LICENSE) и [NOTICE](./NOTICE) данного репозитория и в [мета-репозитории](https://github.com/dvprokofiev/seating-generator).
 
-Copyright (C) 2026 Прокофьев Даниил <[danieldzen@yandex.ru](mailto:danieldzen@yandex.ru)>
+Copyright (C) 2026 Прокофьев Даниил <[d@dvprokofiev.ru](mailto:d@dvprokofiev.ru)>

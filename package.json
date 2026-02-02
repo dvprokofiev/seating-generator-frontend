@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "license": "AGPL-3.0-only",
-  "author": "Прокофьев Даниил <danieldzen@yandex.ru>",
+  "author": "Прокофьев Даниил <d@dvprokofiev.ru>",
   "type": "module",
   "scripts": {
     "dev": "vite",
