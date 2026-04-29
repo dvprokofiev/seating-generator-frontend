@@ -141,7 +141,9 @@ watch(classes, () => saveClasses(), { deep: true });
     <div class="container py-5">
       <div class="d-flex justify-content-between align-items-end mb-5">
         <div>
-          <h1 class="fw-bold display-6 mb-1 text-dark">Мои классы</h1>
+          <h1 class="fw-bold display-6 mb-1 text-dark">
+            Мои классы
+          </h1>
           <p class="text-muted m-0">
             Управление списками и настройками геометрии кабинетов
           </p>
@@ -153,7 +155,7 @@ watch(classes, () => saveClasses(), { deep: true });
             class="shadow-sm px-4 rounded-pill"
             @click="showModal = true"
           >
-            <i-bi-plus-lg me-2></i-bi-plus-lg>Создать класс
+            <i-bi-plus-lg me-2 />Создать класс
           </BButton>
           <BButton
             variant="outline-primary"
@@ -164,30 +166,48 @@ watch(classes, () => saveClasses(), { deep: true });
             <i-bi-upload class="me-1" /> Импорт CSV
           </BButton>
           <input
-            type="file"
             ref="csvInput"
+            type="file"
             accept=".csv"
             style="display: none"
             @change="importCSV($event)"
-          />
+          >
         </div>
       </div>
 
-      <div v-if="classes.length === 0" class="text-center py-5">
+      <div
+        v-if="classes.length === 0"
+        class="text-center py-5"
+      >
         <div class="mb-3 text-muted opacity-25">
-          <i class="bi bi-folder2-open" style="font-size: 4rem"></i>
+          <i
+            class="bi bi-folder2-open"
+            style="font-size: 4rem"
+          />
         </div>
-        <h5 class="text-muted">Список пуст</h5>
+        <h5 class="text-muted">
+          Список пуст
+        </h5>
         <p class="small text-muted mb-4">
           Создайте первый класс, чтобы начать работу
         </p>
-        <BButton variant="outline-primary" @click="showModal = true"
-          >Создать</BButton
+        <BButton
+          variant="outline-primary"
+          @click="showModal = true"
         >
+          Создать
+        </BButton>
       </div>
 
-      <div v-else class="row g-4">
-        <div v-for="cls in classes" :key="cls.id" class="col-md-6 col-lg-4">
+      <div
+        v-else
+        class="row g-4"
+      >
+        <div
+          v-for="cls in classes"
+          :key="cls.id"
+          class="col-md-6 col-lg-4"
+        >
           <div
             class="card h-100 border-0 shadow-sm hover-lift overflow-hidden position-relative"
           >
@@ -195,7 +215,7 @@ watch(classes, () => saveClasses(), { deep: true });
               class="position-absolute top-0 start-0 w-100"
               style="height: 6px"
               :class="getRandomColor(cls.id)"
-            ></div>
+            />
 
             <div class="card-body p-4 d-flex flex-column">
               <div
@@ -219,11 +239,11 @@ watch(classes, () => saveClasses(), { deep: true });
 
               <div class="d-flex gap-2 mb-4">
                 <span class="badge bg-light text-dark border fw-normal">
-                  <i class="bi bi-person-fill text-muted me-1"></i>
+                  <i class="bi bi-person-fill text-muted me-1" />
                   {{ cls.students?.length || 0 }} учеников
                 </span>
                 <span class="badge bg-light text-dark border fw-normal">
-                  <i class="bi bi-calendar3 text-muted me-1"></i>
+                  <i class="bi bi-calendar3 text-muted me-1" />
                   {{ new Date(Number(cls.id)).toLocaleDateString() }}
                 </span>
               </div>
@@ -241,7 +261,7 @@ watch(classes, () => saveClasses(), { deep: true });
                   variant="success"
                   class="fw-bold shadow-sm"
                 >
-                  <i class="bi bi-magic me-2"></i>Рассадить
+                  <i class="bi bi-magic me-2" />Рассадить
                 </BButton>
                 <router-link
                   :to="`/class/${cls.id}/history`"
@@ -265,9 +285,7 @@ watch(classes, () => saveClasses(), { deep: true });
         @ok="addNewClass(newClassName)"
       >
         <div class="py-2">
-          <label class="form-label text-muted small fw-bold text-uppercase"
-            >Название</label
-          >
+          <label class="form-label text-muted small fw-bold text-uppercase">Название</label>
           <BFormInput
             v-model="newClassName"
             placeholder="Например: 10 'Б'"

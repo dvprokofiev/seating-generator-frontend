@@ -91,7 +91,10 @@ const adjustFontSize = (el) => {
             class="seat flex-fill d-flex align-items-center justify-content-center p-1 border-end"
             :style="getSeatStyle(row - 1, (col - 1) * 2)"
           >
-            <span class="student-name" v-fit-text>{{
+            <span
+              v-fit-text
+              class="student-name"
+            >{{
               getStudentName(row - 1, (col - 1) * 2)
             }}</span>
           </div>
@@ -99,7 +102,10 @@ const adjustFontSize = (el) => {
             class="seat flex-fill d-flex align-items-center justify-content-center p-1"
             :style="getSeatStyle(row - 1, (col - 1) * 2 + 1)"
           >
-            <span class="student-name" v-fit-text>{{
+            <span
+              v-fit-text
+              class="student-name"
+            >{{
               getStudentName(row - 1, (col - 1) * 2 + 1)
             }}</span>
           </div>
@@ -110,7 +116,10 @@ const adjustFontSize = (el) => {
             class="seat flex-fill d-flex align-items-center justify-content-center p-1"
             :style="getSeatStyle(row - 1, col - 1)"
           >
-            <span class="student-name small fw-medium" v-fit-text>{{
+            <span
+              v-fit-text
+              class="student-name small fw-medium"
+            >{{
               getStudentName(row - 1, col - 1)
             }}</span>
           </div>

@@ -166,21 +166,32 @@ watch(
       class="toast-container position-fixed top-0 end-0 p-3"
       style="z-index: 2000"
     >
-      <BToast v-model="isToastVisible" variant="success" :delay="2000">
+      <BToast
+        v-model="isToastVisible"
+        variant="success"
+        :delay="2000"
+      >
         <div class="d-flex align-items-center">
           <i-bi-check-circle-fill />
           Рассадка успешно сохранена!
         </div>
       </BToast>
 
-      <BToast v-model="isWarnToastVisible" variant="warning" :delay="2000">
+      <BToast
+        v-model="isWarnToastVisible"
+        variant="warning"
+        :delay="2000"
+      >
         <div class="d-flex align-items-center">
           <i-bi-exclamation-triangle-fill />
           Такая рассадка уже есть в сохраненных!
         </div>
       </BToast>
     </div>
-    <BContainer fluid class="main-container p-0 h-100">
+    <BContainer
+      fluid
+      class="main-container p-0 h-100"
+    >
       <BRow class="h-100">
         <BCol
           md="3"
@@ -197,13 +208,13 @@ watch(
               }}</span>
             </label>
             <input
+              v-model.number="priorities.medical"
               type="range"
               class="form-range"
-              v-model.number="priorities.medical"
               min="0"
               max="1"
               step="0.05"
-            />
+            >
           </div>
 
           <div class="slider-group mb-4">
@@ -216,13 +227,13 @@ watch(
               }}</span>
             </label>
             <input
+              v-model.number="priorities.friends"
               type="range"
               class="form-range"
-              v-model.number="priorities.friends"
               min="0"
               max="1"
               step="0.05"
-            />
+            >
           </div>
 
           <div class="slider-group mb-4">
@@ -233,13 +244,13 @@ watch(
               <span class="badge bg-danger fs-6">{{ priorities.enemies }}</span>
             </label>
             <input
+              v-model.number="priorities.enemies"
               type="range"
               class="form-range"
-              v-model.number="priorities.enemies"
               min="0"
               max="1"
               step="0.05"
-            />
+            >
           </div>
 
           <div class="slider-group mb-4">
@@ -252,13 +263,13 @@ watch(
               }}</span>
             </label>
             <input
+              v-model.number="priorities.preferences"
               type="range"
               class="form-range"
-              v-model.number="priorities.preferences"
               min="0"
               max="1"
               step="0.05"
-            />
+            >
           </div>
           <div class="slider-group mb-4">
             <label
@@ -268,41 +279,47 @@ watch(
               <span class="badge bg-info fs-6">{{ priorities.fill }}</span>
             </label>
             <input
+              v-model.number="priorities.fill"
               type="range"
               class="form-range"
-              v-model.number="priorities.fill"
               min="0"
               max="1"
               step="0.05"
-            />
+            >
           </div>
 
           <div class="d-grid gap-2">
             <button
               class="btn btn-success btn-lg shadow fw-bold py-3 generate-btn"
-              @click="handleGenerate"
               :disabled="isGenerating"
+              @click="handleGenerate"
             >
               <span v-if="!isGenerating"><i-bi-magic />Рассадить!</span>
-              <span v-else
-                ><span class="spinner-border spinner-border-sm me-2"></span
-                >Думаю...</span
-              >
+              <span v-else><span class="spinner-border spinner-border-sm me-2" />Думаю...</span>
             </button>
             <BButton
               :disabled="!response || response.length === 0"
-              @click="handleSave"
               variant="outline-primary"
-              >Сохранить рассадку</BButton
+              @click="handleSave"
             >
+              Сохранить рассадку
+            </BButton>
           </div>
 
           <div
             v-if="validateErrors.length"
             class="alert alert-danger mt-3 small"
           >
-            <ul v-if="validateErrors.length" class="mb-0 ps-3 mt-1">
-              <li v-for="e in validateErrors" :key="e">{{ e }}</li>
+            <ul
+              v-if="validateErrors.length"
+              class="mb-0 ps-3 mt-1"
+            >
+              <li
+                v-for="e in validateErrors"
+                :key="e"
+              >
+                {{ e }}
+              </li>
             </ul>
           </div>
         </BCol>
@@ -313,22 +330,22 @@ watch(
           >
             <button
               class="btn btn-light border"
-              @click="zoomOut"
               title="Уменьшить"
+              @click="zoomOut"
             >
               -
             </button>
             <button
               class="btn btn-light border px-3"
-              @click="resetView"
               title="Сброс"
+              @click="resetView"
             >
               100%
             </button>
             <button
               class="btn btn-light border"
-              @click="zoomIn"
               title="Увеличить"
+              @click="zoomIn"
             >
               +
             </button>
@@ -336,11 +353,11 @@ watch(
           <div
             class="position-absolute bottom-0 start-0 m-3 z-3 text-muted small user-select-none"
           >
-            <i class="bi bi-arrows-move"></i> Тяните мышкой для перемещения
+            <i class="bi bi-arrows-move" /> Тяните мышкой для перемещения
           </div>
           <div
-            class="viewport w-100 h-100 d-flex align-items-center justify-content-center"
             ref="viewportRef"
+            class="viewport w-100 h-100 d-flex align-items-center justify-content-center"
             @mousedown="startPan"
             @mousemove="panning"
             @mouseup="endPan"
@@ -351,7 +368,7 @@ watch(
               <ClassMap
                 :config="request.classConfig"
                 :seating="response"
-              ></ClassMap>
+              />
             </div>
           </div>
         </BCol>

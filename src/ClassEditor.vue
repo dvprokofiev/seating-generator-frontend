@@ -177,60 +177,89 @@ onMounted(() => loadClasses());
     class="toast-container position-fixed top-0 end-0 p-3"
     style="z-index: 2000"
   >
-    <BToast v-model="showSuccessToast" variant="success" :delay="2000">
+    <BToast
+      v-model="showSuccessToast"
+      variant="success"
+      :delay="2000"
+    >
       <div class="d-flex align-items-center">
         <i-bi-check-circle-fill />
         Класс успешно сохранена!
       </div>
     </BToast>
   </div>
-  <div class="p-3" v-if="cls">
+  <div
+    v-if="cls"
+    class="p-3"
+  >
     <div class="d-flex align-items-center justify-content-between mb-4">
       <div class="d-flex align-items-center gap-3">
-        <BButton variant="outline-secondary" @click="$router.back()"
-          >&larr;</BButton
+        <BButton
+          variant="outline-secondary"
+          @click="$router.back()"
         >
-        <h2 class="m-0">{{ cls.name }}</h2>
+          &larr;
+        </BButton>
+        <h2 class="m-0">
+          {{ cls.name }}
+        </h2>
         <BButton
           variant="outline-primary"
           :disabled="hasErrors"
           @click="handleSave"
-          >Сохранить класс</BButton
         >
+          Сохранить класс
+        </BButton>
         <i-bi-exclamation-triangle-fill
           v-if="hasErrors"
+          v-b-tooltip.hover="'Нажмите, чтобы увидеть ошибки'"
           variant="link"
           class="p-0 text-danger border-0 shadow-none"
-          @click="showErrorsModal = true"
-          v-b-tooltip.hover="'Нажмите, чтобы увидеть ошибки'"
           type="button"
-        ></i-bi-exclamation-triangle-fill>
+          @click="showErrorsModal = true"
+        />
       </div>
     </div>
 
     <BTabs content-class="mt-3">
-      <BTab title="Ученики" class="p-4 bg-light">
+      <BTab
+        title="Ученики"
+        class="p-4 bg-light"
+      >
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div>
-            <h5 class="fw-bold mb-1">Список класса</h5>
+            <h5 class="fw-bold mb-1">
+              Список класса
+            </h5>
             <div class="text-muted small">
               Всего учеников: {{ cls.students.length }}
             </div>
           </div>
           <div class="d-flex gap-2">
-            <BButton variant="outline-success" size="sm" @click="exportToCSV">
+            <BButton
+              variant="outline-success"
+              size="sm"
+              @click="exportToCSV"
+            >
               <i-bi-download class="me-1" /> Экспорт CSV
             </BButton>
           </div>
         </div>
-        <div v-if="!cls.students?.length" class="text-center py-5 text-muted">
+        <div
+          v-if="!cls.students?.length"
+          class="text-center py-5 text-muted"
+        >
           <div class="display-1 text-muted opacity-25 mb-3">
             <i-bi-people />
           </div>
           <p>В классе пока никого нет.</p>
-          <BButton variant="outline-primary" size="sm" @click="addStudent"
-            >Добавить первого</BButton
+          <BButton
+            variant="outline-primary"
+            size="sm"
+            @click="addStudent"
           >
+            Добавить первого
+          </BButton>
         </div>
 
         <div
@@ -269,10 +298,11 @@ onMounted(() => loadClasses());
               class="bg-primary-subtle rounded p-2 d-flex gap-3 align-items-center"
               style="flex: 3"
             >
-              <div class="d-flex flex-column" style="flex: 1">
-                <label class="tiny-label text-primary fw-bold mb-1"
-                  >Парты</label
-                >
+              <div
+                class="d-flex flex-column"
+                style="flex: 1"
+              >
+                <label class="tiny-label text-primary fw-bold mb-1">Парты</label>
                 <BFormInput
                   v-model="student.preferredRows"
                   size="sm"
@@ -280,7 +310,10 @@ onMounted(() => loadClasses());
                   placeholder="Любой"
                 />
               </div>
-              <div class="d-flex flex-column" style="flex: 1">
+              <div
+                class="d-flex flex-column"
+                style="flex: 1"
+              >
                 <label class="tiny-label text-primary fw-bold mb-1">Ряды</label>
                 <BFormInput
                   v-model="student.preferredColumns"
@@ -294,8 +327,8 @@ onMounted(() => loadClasses());
                 size="sm"
                 class="text-primary border-0 rounded-circle shadow-sm"
                 style="width: 32px; height: 32px"
-                @click="openVisualizer(student, 'prefs')"
                 title="Выбрать на схеме"
+                @click="openVisualizer(student, 'prefs')"
               >
                 <i-bi-map-fill />
               </BButton>
@@ -305,10 +338,11 @@ onMounted(() => loadClasses());
               class="bg-danger-subtle rounded p-2 d-flex gap-3 align-items-center"
               style="flex: 3"
             >
-              <div class="d-flex flex-column" style="flex: 1">
-                <label class="tiny-label text-danger fw-bold mb-1"
-                  >Медицинские парты</label
-                >
+              <div
+                class="d-flex flex-column"
+                style="flex: 1"
+              >
+                <label class="tiny-label text-danger fw-bold mb-1">Медицинские парты</label>
                 <BFormInput
                   v-model="student.medicalPreferredRow"
                   size="sm"
@@ -316,10 +350,11 @@ onMounted(() => loadClasses());
                   placeholder="-"
                 />
               </div>
-              <div class="d-flex flex-column" style="flex: 1">
-                <label class="tiny-label text-danger fw-bold mb-1"
-                  >Медицинские ряды</label
-                >
+              <div
+                class="d-flex flex-column"
+                style="flex: 1"
+              >
+                <label class="tiny-label text-danger fw-bold mb-1">Медицинские ряды</label>
                 <BFormInput
                   v-model="student.medicalPreferredColumn"
                   size="sm"
@@ -332,8 +367,8 @@ onMounted(() => loadClasses());
                 size="sm"
                 class="text-danger border-0 rounded-circle shadow-sm"
                 style="width: 32px; height: 32px"
-                @click="openVisualizer(student, 'medical')"
                 title="Выбрать на схеме"
+                @click="openVisualizer(student, 'medical')"
               >
                 <i-bi-heart-pulse-fill />
               </BButton>
@@ -352,20 +387,30 @@ onMounted(() => loadClasses());
           </div>
         </div>
 
-        <div class="text-center mt-4" v-if="cls.students.length > 0">
+        <div
+          v-if="cls.students.length > 0"
+          class="text-center mt-4"
+        >
           <BButton
             variant="outline-primary"
-            @click="addStudent"
             class="rounded-pill px-4"
+            @click="addStudent"
           >
             <i-bi-person-plus-fill /> Добавить
           </BButton>
         </div>
       </BTab>
 
-      <BTab title="Предпочтения" class="p-4">
+      <BTab
+        title="Предпочтения"
+        class="p-4"
+      >
         <datalist id="students-list">
-          <option v-for="s in cls.students" :key="s.id" :value="s.name" />
+          <option
+            v-for="s in cls.students"
+            :key="s.id"
+            :value="s.name"
+          />
         </datalist>
 
         <div class="row g-5">
@@ -374,11 +419,16 @@ onMounted(() => loadClasses());
               class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2"
             >
               <h6 class="text-success fw-bold m-0">
-                <i class="bi bi-heart-fill me-2"></i>Вместе
+                <i class="bi bi-heart-fill me-2" />Вместе
               </h6>
-              <BBadge variant="success" pill>{{
-                cls.preferences.length
-              }}</BBadge>
+              <BBadge
+                variant="success"
+                pill
+              >
+                {{
+                  cls.preferences.length
+                }}
+              </BBadge>
             </div>
 
             <div class="d-flex flex-column gap-2">
@@ -396,7 +446,7 @@ onMounted(() => loadClasses());
                   class="border-0 bg-transparent shadow-none"
                 />
 
-                <i class="bi bi-plus-lg text-success small"></i>
+                <i class="bi bi-plus-lg text-success small" />
 
                 <BFormInput
                   v-model="p[1]"
@@ -410,8 +460,8 @@ onMounted(() => loadClasses());
                 <BButton
                   variant="link"
                   class="text-secondary p-0 px-2"
-                  @click="cls.preferences.splice(i, 1)"
                   title="Удалить"
+                  @click="cls.preferences.splice(i, 1)"
                 >
                   <i-bi-trash />
                 </BButton>
@@ -420,8 +470,8 @@ onMounted(() => loadClasses());
               <BButton
                 variant="outline-success"
                 size="sm"
-                @click="cls.preferences.push(['', ''])"
                 class="mt-2 border-dashed opacity-75"
+                @click="cls.preferences.push(['', ''])"
               >
                 + Добавить пару
               </BButton>
@@ -433,11 +483,16 @@ onMounted(() => loadClasses());
               class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2"
             >
               <h6 class="text-danger fw-bold m-0">
-                <i class="bi bi-slash-circle-fill me-2"></i>Раздельно
+                <i class="bi bi-slash-circle-fill me-2" />Раздельно
               </h6>
-              <BBadge variant="danger" pill>{{
-                cls.forbidden?.length || 0
-              }}</BBadge>
+              <BBadge
+                variant="danger"
+                pill
+              >
+                {{
+                  cls.forbidden?.length || 0
+                }}
+              </BBadge>
             </div>
 
             <div class="d-flex flex-column gap-2">
@@ -469,8 +524,8 @@ onMounted(() => loadClasses());
                 <BButton
                   variant="link"
                   class="text-secondary p-0 px-2"
-                  @click="cls.forbidden.splice(i, 1)"
                   title="Удалить"
+                  @click="cls.forbidden.splice(i, 1)"
                 >
                   <i-bi-trash />
                 </BButton>
@@ -479,8 +534,8 @@ onMounted(() => loadClasses());
               <BButton
                 variant="outline-danger"
                 size="sm"
-                @click="(cls.forbidden || (cls.forbidden = [])).push(['', ''])"
                 class="mt-2 border-dashed opacity-75"
+                @click="(cls.forbidden || (cls.forbidden = [])).push(['', ''])"
               >
                 + Добавить запрет
               </BButton>
@@ -489,7 +544,10 @@ onMounted(() => loadClasses());
         </div>
       </BTab>
 
-      <BTab title="Настройки" class="p-4">
+      <BTab
+        title="Настройки"
+        class="p-4"
+      >
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6">
             <div class="mb-5">
@@ -528,8 +586,8 @@ onMounted(() => loadClasses());
                         <i-bi-grid />
                       </div>
                       <BFormInput
-                        type="number"
                         v-model.number="cls.classConfig.columns"
+                        type="number"
                         min="1"
                         class="form-control-lg border-0 bg-light fw-bold"
                         style="max-width: 80px; text-align: center"
@@ -537,9 +595,7 @@ onMounted(() => loadClasses());
                     </div>
                   </div>
                   <div class="col-6">
-                    <label class="d-block small text-muted mb-2"
-                      >Парт в ряду</label
-                    >
+                    <label class="d-block small text-muted mb-2">Парт в ряду</label>
                     <div class="d-flex align-items-center gap-3">
                       <div
                         class="bg-light rounded-circle p-2 text-primary d-flex align-items-center justify-content-center"
@@ -548,8 +604,8 @@ onMounted(() => loadClasses());
                         <i-bi-distribute-vertical />
                       </div>
                       <BFormInput
-                        type="number"
                         v-model.number="cls.classConfig.rows"
+                        type="number"
                         min="1"
                         class="form-control-lg border-0 bg-light fw-bold"
                         style="max-width: 80px; text-align: center"
@@ -558,12 +614,10 @@ onMounted(() => loadClasses());
                   </div>
 
                   <div class="col-12">
-                    <hr class="text-muted opacity-25 my-2" />
+                    <hr class="text-muted opacity-25 my-2">
                   </div>
                   <div class="col-12">
-                    <label class="d-block small text-muted mb-2"
-                      >Тип рассадки</label
-                    >
+                    <label class="d-block small text-muted mb-2">Тип рассадки</label>
                     <div class="d-flex gap-3">
                       <div
                         class="flex-fill border rounded p-3 cursor-pointer position-relative overflow-hidden"
@@ -572,8 +626,8 @@ onMounted(() => loadClasses());
                             ? 'border-primary bg-primary-subtle'
                             : 'bg-light border-light'
                         "
-                        @click="cls.classConfig.deskType = 'double'"
                         style="cursor: pointer; transition: all 0.2s"
+                        @click="cls.classConfig.deskType = 'double'"
                       >
                         <div class="d-flex align-items-center gap-2 mb-1">
                           <i
@@ -583,7 +637,7 @@ onMounted(() => loadClasses());
                                 ? 'text-primary'
                                 : 'text-muted'
                             "
-                          ></i>
+                          />
                           <span
                             class="fw-bold small"
                             :class="
@@ -591,8 +645,7 @@ onMounted(() => loadClasses());
                                 ? 'text-dark'
                                 : 'text-muted'
                             "
-                            >Двойные</span
-                          >
+                          >Двойные</span>
                         </div>
                         <div
                           class="small text-muted"
@@ -608,8 +661,8 @@ onMounted(() => loadClasses());
                             ? 'border-primary bg-primary-subtle'
                             : 'bg-light border-light'
                         "
-                        @click="cls.classConfig.deskType = 'single'"
                         style="cursor: pointer; transition: all 0.2s"
+                        @click="cls.classConfig.deskType = 'single'"
                       >
                         <div class="d-flex align-items-center gap-2 mb-1">
                           <i
@@ -619,7 +672,7 @@ onMounted(() => loadClasses());
                                 ? 'text-primary'
                                 : 'text-muted'
                             "
-                          ></i>
+                          />
                           <span
                             class="fw-bold small"
                             :class="
@@ -627,8 +680,7 @@ onMounted(() => loadClasses());
                                 ? 'text-dark'
                                 : 'text-muted'
                             "
-                            >Одинарные</span
-                          >
+                          >Одинарные</span>
                         </div>
                         <div
                           class="small text-muted"
@@ -652,9 +704,9 @@ onMounted(() => loadClasses());
       title="Выбор мест"
       size="lg"
       centered
-      @ok="saveVisualSelection"
       ok-title="Сохранить"
       cancel-title="Отмена"
+      @ok="saveVisualSelection"
     >
       <div class="d-flex flex-column align-items-center">
         <div class="w-100 d-flex justify-content-center mb-5">
@@ -671,14 +723,14 @@ onMounted(() => loadClasses());
             <div
               class="border rounded bg-success"
               style="width: 16px; height: 16px"
-            ></div>
+            />
             Ряд
           </div>
           <div class="d-flex align-items-center gap-1">
             <div
               class="border rounded bg-primary"
               style="width: 16px; height: 16px"
-            ></div>
+            />
             Парта
           </div>
         </div>
@@ -732,7 +784,7 @@ onMounted(() => loadClasses());
                   class="d-flex align-items-center justify-content-center border rounded-1"
                   :class="
                     selection.rows.includes(rowNum) ||
-                    selection.cols.includes(seatIndex)
+                      selection.cols.includes(seatIndex)
                       ? 'bg-primary border-primary text-white'
                       : 'bg-light border-light-subtle text-muted'
                   "
@@ -741,9 +793,9 @@ onMounted(() => loadClasses());
                   <i-bi-check-lg
                     v-if="
                       selection.rows.includes(rowNum) ||
-                      selection.cols.includes(seatIndex)
+                        selection.cols.includes(seatIndex)
                     "
-                  ></i-bi-check-lg>
+                  />
                 </div>
               </div>
             </div>
@@ -757,14 +809,25 @@ onMounted(() => loadClasses());
       ok-only
       ok-title="Понятно"
     >
-      <div class="alert alert-danger" v-if="getValidationErrors(cls).length">
+      <div
+        v-if="getValidationErrors(cls).length"
+        class="alert alert-danger"
+      >
         <ul class="mb-0">
-          <li v-for="(err, index) in getValidationErrors(cls)" :key="index">
+          <li
+            v-for="(err, index) in getValidationErrors(cls)"
+            :key="index"
+          >
             {{ err }}
           </li>
         </ul>
       </div>
-      <p v-else class="text-success">Ошибок не обнаружено.</p>
+      <p
+        v-else
+        class="text-success"
+      >
+        Ошибок не обнаружено.
+      </p>
     </BModal>
   </div>
 </template>

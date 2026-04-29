@@ -253,7 +253,10 @@ onMounted(loadClasses);
 </script>
 <template>
   <BApp>
-    <div v-if="cls" class="container py-5 min-vh-100">
+    <div
+      v-if="cls"
+      class="container py-5 min-vh-100"
+    >
       <div class="d-flex align-items-center justify-content-between mb-5">
         <div class="d-flex align-items-center">
           <BButton
@@ -264,7 +267,9 @@ onMounted(loadClasses);
             <i-bi-arrow-left />
           </BButton>
           <div>
-            <h2 class="fw-bold mb-0 text-dark">Архив рассадок</h2>
+            <h2 class="fw-bold mb-0 text-dark">
+              Архив рассадок
+            </h2>
             <p class="text-muted mb-0 small">
               {{ cls.name }} • {{ cls.students?.length }} учеников
             </p>
@@ -272,7 +277,10 @@ onMounted(loadClasses);
         </div>
       </div>
 
-      <div v-if="cls.seatings?.length" class="row g-4">
+      <div
+        v-if="cls.seatings?.length"
+        class="row g-4"
+      >
         <div
           v-for="(seating, index) in [...cls.seatings].reverse()"
           :key="seating.Date"
@@ -319,11 +327,16 @@ onMounted(loadClasses);
         </div>
       </div>
 
-      <div v-else class="text-center py-5">
+      <div
+        v-else
+        class="text-center py-5"
+      >
         <div class="empty-state-icon mb-3">
           <i-bi-folder2-open class="display-1 text-light" />
         </div>
-        <h4 class="text-muted">История пуста</h4>
+        <h4 class="text-muted">
+          История пуста
+        </h4>
         <p class="text-secondary">
           Здесь будут появляться сохраненные варианты рассадки.
         </p>
@@ -344,10 +357,10 @@ onMounted(loadClasses);
           class="d-flex align-items-center justify-content-between w-100 px-2"
         >
           <div>
-            <h5 class="modal-title fw-bold mb-0">{{ selectedSeatingDate }}</h5>
-            <span class="badge bg-primary-subtle text-primary small"
-              >Просмотр архива</span
-            >
+            <h5 class="modal-title fw-bold mb-0">
+              {{ selectedSeatingDate }}
+            </h5>
+            <span class="badge bg-primary-subtle text-primary small">Просмотр архива</span>
           </div>
 
           <div class="canvas-tools">
@@ -390,7 +403,10 @@ onMounted(loadClasses);
             @mouseleave="endPan"
             @wheel.prevent="onWheel"
           >
-            <div class="canvas-content" :style="canvasStyle">
+            <div
+              class="canvas-content"
+              :style="canvasStyle"
+            >
               <ClassMap
                 v-if="activeSeatingData"
                 :config="historyConfig"

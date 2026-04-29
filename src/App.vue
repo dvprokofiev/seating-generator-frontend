@@ -31,13 +31,19 @@ const handleSeating = () => {
 };
 </script>
 <template>
-  <div id="app" class="d-flex flex-column vh-100 overflow-hidden">
+  <div
+    id="app"
+    class="d-flex flex-column vh-100 overflow-hidden"
+  >
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm flex-shrink-0 py-1"
     >
       <div class="container-fluid">
         <div class="d-flex align-items-center">
-          <router-link class="navbar-brand fw-bold me-1" to="/">
+          <router-link
+            class="navbar-brand fw-bold me-1"
+            to="/"
+          >
             Генератор рассадок
           </router-link>
 
@@ -60,15 +66,21 @@ const handleSeating = () => {
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" />
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div
+          id="navbarNav"
+          class="collapse navbar-collapse"
+        >
           <ul class="navbar-nav me-auto ms-4">
             <li class="nav-item">
-              <router-link class="nav-link" to="/classes-list"
-                >Мои классы</router-link
+              <router-link
+                class="nav-link"
+                to="/classes-list"
               >
+                Мои классы
+              </router-link>
             </li>
             <li
               v-if="activeClass"
@@ -84,8 +96,14 @@ const handleSeating = () => {
             </li>
           </ul>
 
-          <ul v-if="activeClass" class="navbar-nav ms-auto">
-            <li v-if="!route.path.includes('generate')" class="nav-item">
+          <ul
+            v-if="activeClass"
+            class="navbar-nav ms-auto"
+          >
+            <li
+              v-if="!route.path.includes('generate')"
+              class="nav-item"
+            >
               <BButton
                 variant="light"
                 class="rounded-pill px-4 fw-bold text-primary shadow-sm"
