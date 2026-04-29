@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+      timezone: "Europe/Moscow"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase-if-necessary
+
+    groups:
+      stable-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
