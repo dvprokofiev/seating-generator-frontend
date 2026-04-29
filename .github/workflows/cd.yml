@@ -1,8 +1,7 @@
-name: Build and Push Vue Frontend Docker Image
+name: Release Frontend
 
 on:
   push:
-    branches: ["main", "master"]
     tags: ["v*.*.*"]
 
 env:
