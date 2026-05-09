@@ -2,7 +2,7 @@
 [![Main Repo](https://img.shields.io/badge/Main_Project-Meta--Repo-orange?logo=github)](https://github.com/dvprokofiev/seating-generator)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4fc08d?logo=vue.js)](https://vuejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.x-646cff?logo=vite)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.x-646cff?logo=vite)](https://vitejs.dev/)
 [![BootstrapVueNext](https://img.shields.io/badge/BootstrapVueNext-0.40.x-7952b3?logo=bootstrap)](https://bootstrap-vue-next.github.io/bootstrap-vue-next/)
 
 Клиентское веб-приложение для взаимодействия с системой рассадки учеников. Построено на Vue 3.
