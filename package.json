@@ -14,12 +14,12 @@
   },
   "dependencies": {
         "@popperjs/core": "2.11.8",
-        "axios": "1.16.1",
+        "axios": "1.18.0",
         "bootstrap": "5.3.8",
-        "bootstrap-vue-next": "0.45.4",
+        "bootstrap-vue-next": "0.45.6",
         "jspdf": "4.2.1",
         "jspdf-autotable": "5.0.8",
-        "papaparse": "5.5.3",
+        "papaparse": "5.5.4",
         "unplugin-icons": "23.0.1",
         "vue": "3.5.34",
         "vue-router": "5.1.0",
@@ -28,9 +28,9 @@
       "devDependencies": {
         "@iconify-json/bi": "1.2.7",
         "@vitejs/plugin-vue": "6.0.7",
-        "eslint": "10.4.0",
-        "eslint-plugin-vue": "10.9.1",
+        "eslint": "10.5.0",
+        "eslint-plugin-vue": "10.9.2",
         "unplugin-vue-components": "32.1.0",
-        "vite": "8.0.14"
+        "vite": "8.0.16"
       }
 }
