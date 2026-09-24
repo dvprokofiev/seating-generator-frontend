@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.2",
   "license": "AGPL-3.0-only",
   "author": "Прокофьев Даниил <d@dvprokofiev.ru>",
   "type": "module",
