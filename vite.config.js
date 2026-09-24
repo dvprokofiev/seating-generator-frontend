@@ -17,6 +17,9 @@ export default defineConfig({
     }),
     Icons({autoInstall: true, })
   ],
+  test: {
+    environment: 'happy-dom',
+  },
   server: {
     proxy: {
       '/api': {

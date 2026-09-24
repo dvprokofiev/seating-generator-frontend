@@ -304,7 +304,6 @@ watch(classes, () => saveClasses(), { deep: true });
       </BModal>
     </div>
   </BApp>
-  <router-view />
 </template>
 
 <style scoped>
