@@ -184,7 +184,7 @@ onMounted(() => loadClasses());
     >
       <div class="d-flex align-items-center">
         <i-bi-check-circle-fill />
-        Класс успешно сохранена!
+        Класс успешно сохранён!
       </div>
     </BToast>
   </div>
